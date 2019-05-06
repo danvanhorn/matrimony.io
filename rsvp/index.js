@@ -1,9 +1,10 @@
 const Airtable = require('airtable')
 const { json, send } = require('micro')
+const process = require('process')
 
 Airtable.configure({
     endpointUrl: 'https://api.airtable.com',
-    apiKey: 'keydk4StN4zQoG4II'
+    apiKey: process.env.API_KEY
 })
 
 const base = Airtable.base('appDWgGZokOqEJx4q')

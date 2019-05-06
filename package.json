@@ -1,7 +1,7 @@
 {
   "name": "nodejs",
   "version": "1.0.0",
-  "description": "In this example we will be deploying a simple \"Hello World\" example with Node.js.",
+  "description": "rsvp handling lambda functions for my wedding",
   "dependencies": {
     "airtable": "^0.6.0",
     "micro": "^9.3.4"

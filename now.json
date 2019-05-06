@@ -3,5 +3,8 @@
     "name": "nodejs",
     "builds": [
         { "src": "**/*.js", "use": "@now/node" }
-    ]
+    ],
+    "env": {
+        "API_KEY": "@API_KEY"
+      }
 }
