@@ -1,0 +1,15 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "In this example we will be deploying a simple \"Hello World\" example with Node.js.",
+  "dependencies": {
+    "airtable": "^0.6.0",
+    "micro": "^9.3.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
