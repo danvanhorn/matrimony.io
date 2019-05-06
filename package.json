@@ -1,7 +1,7 @@
 {
-  "name": "nodejs",
+  "name": "matrimony.io",
   "version": "1.0.0",
-  "description": "rsvp handling lambda functions for my wedding",
+  "description": "rsvp-handling lambda functions for my wedding",
   "dependencies": {
     "airtable": "^0.6.0",
     "micro": "^9.3.4"
