@@ -10,10 +10,11 @@ Airtable.configure({
 const base = Airtable.base('appDWgGZokOqEJx4q')
 
 module.exports = async (req, res) => {
-    const { firstName, lastName, plusOne } = await json(req)
+    const { firstName, lastName, email, plusOne } = await json(req)
     base('rsvp-list').create({ 
         firstName, 
         lastName, 
+        email,
         plusOne 
     }, (err, record) => {
         if (err) { 
