@@ -24,19 +24,18 @@ module.exports = async (req, res) => {
     }, (err) => {
         if (err) { 
             send(res, 500, err)
+        } else {
+            if(!guests.find(g => g.firstName === guest.firstName && g.lastName === guest.lastName && g.email === guest.email)) {
+                base('rsvp-list').create(guest, (err, record) => {
+                    if (err) { 
+                        send(res, 500, err)
+                    } else {
+                        send(res, 200, record)
+                    }
+                })
+            } else {
+                send(res, 202)
+            }
         }
     })
-
-    if(!guests.find(g => g === guest)) {
-        base('rsvp-list').create(guest, (err, record) => {
-            if (err) { 
-                send(res, 500, err)
-            } else {
-                send(res, 200, record)
-            }
-        })
-    } else {
-        send(res, 202)
-    }
-
 }
