@@ -10,7 +10,7 @@ Airtable.configure({
 const base = Airtable.base('appDWgGZokOqEJx4q')
 
 module.exports = async (req, res) => {
-    const guest = await json(req)
+    const { firstName, lastName, email, plusOne } = await json(req)
 
     let guests = [];
 
@@ -25,8 +25,13 @@ module.exports = async (req, res) => {
         if (err) { 
             send(res, 500, err)
         } else {
-            if(!guests.find(g => g.firstName === guest.firstName && g.lastName === guest.lastName && g.email === guest.email)) {
-                base('rsvp-list').create(guest, (err, record) => {
+            if(!guests.find(g => g.firstName === firstName && g.lastName === lastName && g.email === email)) {
+                base('rsvp-list').create({ 
+                    firstName, 
+                    lastName, 
+                    email, 
+                    plusOne
+                }, (err, record) => {
                     if (err) { 
                         send(res, 500, err)
                     } else {
