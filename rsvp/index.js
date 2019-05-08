@@ -10,12 +10,33 @@ Airtable.configure({
 const base = Airtable.base('appDWgGZokOqEJx4q')
 
 module.exports = async (req, res) => {
-    const { firstName, lastName, email, plusOne } = await json(req)
-    base('rsvp-list').create({ firstName, lastName, email,plusOne }, (err, record) => {
+    const guest = await json(req)
+
+    let guests = [];
+
+    base('rsvp-list').select({
+        view: "Grid view"
+    }).eachPage((records, fetchNextPage) => {
+        records.forEach((record) => {
+            guests.push(record.fields)
+        });
+        fetchNextPage();
+    }, (err) => {
         if (err) { 
             send(res, 500, err)
-        } else {
-            send(res, 200, record)
         }
     })
+
+    if(!guests.find(guest)) {
+        base('rsvp-list').create(guest, (err, record) => {
+            if (err) { 
+                send(res, 500, err)
+            } else {
+                send(res, 200, record)
+            }
+        })
+    } else {
+        send(res, 202, guest)
+    }
+
 }
