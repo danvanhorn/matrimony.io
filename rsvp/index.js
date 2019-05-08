@@ -39,7 +39,7 @@ module.exports = async (req, res) => {
                     }
                 })
             } else {
-                send(res, 202)
+                send(res, 202, {exists: true})
             }
         }
     })
