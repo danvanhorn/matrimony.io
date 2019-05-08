@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
         }
     })
 
-    if(!guests.find(guest)) {
+    if(!guests.find(g => g === guest)) {
         base('rsvp-list').create(guest, (err, record) => {
             if (err) { 
                 send(res, 500, err)
@@ -36,7 +36,7 @@ module.exports = async (req, res) => {
             }
         })
     } else {
-        send(res, 202, guest)
+        send(res, 202)
     }
 
 }
